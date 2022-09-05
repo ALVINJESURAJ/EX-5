@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function convert() {
+            var Amount = parseFloat(document.getElementById('Amount').value);
+            var From = document.getElementById('From').value;
+            var To = document.getElementById('To').value;
+
+
+            switch (From) {
+                case "INR":
+                    switch (To) {
+                        case "USD": Amount = 0.013 * Amount;
+                            break;
+                        case "YEN": Amount = 1.76 * Amount;
+                            break;
+                    }
+                    break;
+                case "USD":
+                    switch (To) {
+                        case "INR": Amount = 79 * Amount;
+                            break;
+                        case "YEN": Amount = 140 * Amount;
+                            break;
+                    }
+                    break;
+                case "YEN":
+                    switch (To) {
+                        case "INR": Amount = 0.57 * Amount;
+                            break;
+                        case "USD": Amount = 0.0071 * Amount;
+                            break;
+                        default:
+                            break;
+                    }
+                default:
+                    break;
+            }
+
+            document.getElementById('result').innerHTML = 'AMOUNT = ' + Amount;
+        }
+    </script>
+</head>
+
+<body width="50px" height="300px">
+    <fieldset style="color:blue; border-radius: 5px;">
+        <h1 align="center" style="color:blue;">Currency Converter</h1><br><br>
+        Amount:<br><input type="text" id="Amount" onkeyup="convert()"><br><br>FROM<br>
+
+        <select id="From" onchange="convert()" style="width:150px;">
+            <option>INR</option>
+            <option>USD</option>
+            <option>YEN</option>
+        </select><br><br>To:<br>
+        <select id="To" onchange="convert()" style="width:150px;">
+            <option>INR</option>
+            <option>USD</option>
+            <option>YEN</option>
+        </select><br><br>
+        <div align="center" id="result" style="color:white;font-size: 25px; background-color:blue; border-radius:10px;">
+        </div><br>
+    </fieldset>
+
+</body>
+
+</html>
